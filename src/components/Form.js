@@ -3,9 +3,6 @@ import { setEventListeners, checkValidForm } from './Validate'
 
 
 const Form = ({items, setItems}) => {
-    
-
-
     const [FirstName, setFirstName] = useState('')
     const FirstNameHandler = (e) => { setFirstName(e.target.value) }
 
@@ -16,8 +13,6 @@ const Form = ({items, setItems}) => {
     const EmailHandler = (e) => { setEmail(e.target.value) }
 
     const submitHandler = (e) =>{
-        
-        
         e.preventDefault()
         if (FirstName.length < 2) {
             checkValidForm(forms)
@@ -70,7 +65,7 @@ const Form = ({items, setItems}) => {
             </div>
 
             <div className="d-grid gap-2">
-                <button onClick={submitHandler} className="submit btn btn-primary" type="button">Skicka</button>
+                <button onClick={submitHandler} className="submit btn btn-secondary" data-bs-toggle="button" type="button">Skicka</button>
                 
             </div>
             
