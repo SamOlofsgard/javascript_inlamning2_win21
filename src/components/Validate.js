@@ -27,11 +27,7 @@ export function checkValidForm(elements){
 
     if(submitButton !== undefined)
         submitButton.disabled = disable
-
-    
 }
-
-
 
 export function setEventListeners(forms){
     
@@ -44,7 +40,6 @@ export function setEventListeners(forms){
                     e.target.classList.add("is-invalid");
                     document.getElementById(`${e.target.id}-error`).style.display ="block";
                     checkValidForm(forms)
-                    console.log(e.target.value)
                 }
                 else{
                         e.target.classList.remove("is-invalid");
@@ -59,10 +54,12 @@ export function setEventListeners(forms){
             element.addEventListener("keyup", function(e){
                 if(!validEmail(e.target.value)){
                     e.target.classList.add("is-invalid");
+                    document.getElementById(`${e.target.id}-error`).style.display ="block";
                     checkValidForm(forms)
                 }
                 else{
                     e.target.classList.remove("is-invalid");
+                    document.getElementById(`${e.target.id}-error`).style.display ="none";
                     checkValidForm(forms)
                 }
              })

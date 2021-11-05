@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { setEventListeners, checkValidForm } from './Validate'
 
-
 const Form = ({items, setItems}) => {
     const [FirstName, setFirstName] = useState('')
     const FirstNameHandler = (e) => { setFirstName(e.target.value) }
@@ -19,7 +18,7 @@ const Form = ({items, setItems}) => {
             return
         }
         let json = JSON.stringify({ firstName: FirstName, lastName:Lastname, email:Email})
-        console.log(json)
+        
         fetch("https://ecexam-webapi.azurewebsites.net/api/Customers", {
             headers: {
                 'Content-Type': 'application/json'
@@ -37,14 +36,11 @@ const Form = ({items, setItems}) => {
         
     }
 
-
     var forms = document.querySelectorAll('.needs-validation')
     checkValidForm(forms)
     setEventListeners(forms)
       
     return (
-        <>
-        
         <form>
             <div className="mb-3">
                 <label  className="form-label">Förnamn</label>
@@ -61,21 +57,15 @@ const Form = ({items, setItems}) => {
             <div className="mb-3">
                 <label  className="form-label">Email</label>
                 <input type="email" className="form-control needs-validation" id="nykund-email" rows="3"value ={Email} onChange={EmailHandler} ></input>
-                <div id="email-error" className="invalid-feedback">Du måste ange ett giltigt email</div>
+                <div id="nykund-email-error" className="invalid-feedback">Du måste ange ett giltigt email</div>
             </div>
 
             <div className="d-grid gap-2">
                 <button onClick={submitHandler} className="submit btn btn-secondary" data-bs-toggle="button" type="button">Skicka</button>
                 
             </div>
-            
         </form>
-        </>
-        
     )
-
-    
-    
 }
 
 export default Form
